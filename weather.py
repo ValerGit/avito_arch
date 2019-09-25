@@ -1,7 +1,6 @@
 from flask import Flask, request, render_template
 import requests, json, os
-p = os.environ['PORT']
-
+print(os.getenv('PORT'))
 app = Flask(__name__)
 f = open('api_conf.json', 'r')
 js = json.load(f)
@@ -26,7 +25,7 @@ def weather_c(mode):
     else:
         return 'wrong url'
 if __name__ == '__main__':
-    if p:
-        app.run(debug=True, port=p)
+    if os.getenv('PORT'):
+        app.run(debug=True, port=os.getenv('PORT'))
     else:
         app.run(debug=True, port=5000)
