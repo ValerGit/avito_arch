@@ -21,7 +21,7 @@ def weather_c(mode):
         for i in resp["list"]:
             if (i["dt"] == dt):
                 return i
-        return 'not found'
+        return 'dt not found'
     else:
         return 'wrong url'
 if __name__ == '__main__':
