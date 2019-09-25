@@ -17,6 +17,10 @@ def weather_c(mode):
     elif mode == 'forecast':
         r = requests.get('http://api.openweathermap.org/data/2.5/forecast?q=%s&units=metric&APPID=%s' % (city, api))
         resp = r.json()
-        return resp
+        print(resp["list"][0]["dt"])
+        for i in resp["list"]:
+            if (i["dt"] == dt):
+                return i
+        return 'not found'
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
