@@ -22,5 +22,7 @@ def weather_c(mode):
             if (i["dt"] == dt):
                 return i
         return 'not found'
+    else:
+        return 'wrong url'
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
