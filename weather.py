@@ -12,7 +12,6 @@ api = js["key"]
 def weather_c(mode):
     city = request.args.get('city')
     dtReq = request.args.get('dt')
-    dt = int(dtReq)
     if city and mode:
         if mode == 'current':
             r = requests.get(
@@ -21,12 +20,13 @@ def weather_c(mode):
             resp = r.json()
             return "City: %s, unit: celsius, temperature: %s, weather: %s" % (
                 resp["name"], resp["main"].get("temp"), resp["weather"][0]["main"])
-        elif mode == 'forecast' and dt:
+        elif mode == 'forecast' and dtReq:
             r = requests.get(
                 'http://api.openweathermap.org/data/2.5/forecast?q=%s&units=metric&APPID=%s' %
                 (city, api))
             resp = r.json()
             app.logger.info(resp["list"][0]["dt"])
+            dt = int(dtReq)
             for i in resp["list"]:
                 if (i["dt"] == dt):
                     return i
