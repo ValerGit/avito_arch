@@ -1,3 +1,6 @@
 .vscode
 dev.env
 api_conf.json
+node_modules
+package-lock.json
+*.pyc
