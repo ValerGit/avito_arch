@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+service salesExchange{
+  rpc GetPrice(PriceRequest) returns(PriceResponse){}
+}
+
+
+message PriceRequest{
+  string name = 1;
+}
+
+message PriceResponse{
+  string name = 1;
+  int32 price = 2;
+}
